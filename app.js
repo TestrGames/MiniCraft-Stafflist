@@ -1,26 +1,23 @@
-var staffnick = document.getElementById("staffnick").value;
-
-
-const serversGetter = async() => {
-    const req = await fetch("http://82.208.17.64:31364/user/" + staffnick);
+async function nickGetter(nick) {
+    const req = await fetch("http://194.163.177.12:27016/?nick=" + nick);
     const data = await req.json();
 
-    return await data;
+    return data;
 }
 
-function formdata() 
-{
-
-}
+document.querySelector("#ATNickForm>#ATNickSubmit").addEventListener("click", async(event) => {
+    event.preventDefault();
+    const nick = document.getElementById("staffnick").value;
+    if(!nick) return;
+    render(nick);
+});
 
 function closeAlert() {
     document.getElementsByClassName("alert")[0].remove();
 }
 
-async function render() {
-    const req = await fetch("http://82.208.17.64:31364/user/" + staffnick);
-
-    const data = await req.json();
+async function render(target) {
+    const data = await nickGetter(target);
 
     let nick =  data["name"];
     let rank = data["group"];
@@ -32,10 +29,7 @@ async function render() {
     let holiday = data["holiday"];
     let afktime = data["afkTime"];
     let time = data["time"];
-    let lastseen = data["seen"];    
-    
-    
-    
+    let lastseen = data["seen"];
 
     document.getElementsByClassName("alert")[0].innerHTML = `<div style="display: flex; gap: 8px;">
             <div><i class="fa-solid fa-circle-info" fa-2xl></i> </div>
@@ -53,4 +47,3 @@ async function render() {
             <div style="flex-grow: 1; text-align: right;"><i class="fas fa-xmark" onclick="closeAlert();" style="cursor: pointer;"></i></div>
         </div>`;
 }
-render();
