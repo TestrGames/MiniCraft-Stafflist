@@ -93,26 +93,7 @@ body {
     cursor: not-allowed;
   }
   
-  /*.discord{
-    
-  }
-  */
-  
-  /* The Modal (background) */
-  .DiscordModal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: transparent; /* Fallback color */
-    background-color: transparent; /* Black w/ opacity */
-  }
-  
+
   /* Modal Content */
   .DiscordModal-content {
     background-color: #fefefe;
@@ -146,6 +127,7 @@ body {
     overflow: hidden;
     background-color: #0e1013;
     font-family: Arial;
+    text-emphasis-color: white;
   }
   
   /* Links inside the navbar */
@@ -218,14 +200,14 @@ body {
   #################
   */
   input[type=text] {
-    width: 130px;
+    width: 230px;
     position: absolute;
     box-sizing: border-box;
-    border: 2px solid rgb(0, 0, 0);
+    border: 2px solid rgb(230, 16, 16);
     border-radius: 2px;
     font-size: 16px;
-    background-color: #404040;
-    background-image: url('images/lupa.png');
+    background-color: #ebd9d9;
+    background-image: url('');
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
@@ -235,38 +217,10 @@ body {
   
   input[type=text]:focus {
     width: 20%;
-    border: #000;
+    border: rgb(163, 16, 16);
   }
   
-  /*
-  #####################
-  ---Overlay discord---
-  #####################
-  */
-  #overlay {
-    position: fixed;
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 2;
-    cursor: pointer;
-  }
-  
-  #text{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 50px;
-    color: white;
-    transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-  }
-  
+
   /*
   ############
   ---Alerts---
@@ -294,52 +248,7 @@ body {
   }
   
   
-  /*
-  ##############
-  ---snackbar---
-  ##############
-  */
-  #snackbar {
-    visibility: hidden;
-    min-width: 250px;
-    margin-left: -125px;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    padding: 16px;
-    position: fixed;
-    z-index: 1;
-    left: 50%;
-    bottom: 30px;
-    font-size: 17px;
-  }
-  
-  #snackbar.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  }
-  
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
+
   
   
   
