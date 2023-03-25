@@ -1,254 +1,244 @@
 body {
-    margin: 0;
-    background: #222831;
-  }
-  
-  h3 {
-    margin: 0;
-    
-    padding: 10px;
-  }
-  .servers {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  
-  }
-  
-  .servers li {
-    border: 2px solid #393E46;
-    border-radius:5px;
-   background: #111316;
-    color: #fff;
-    flex: 1 1 200px;
-    margin: 32px 16px;
-    
-  
-  }
-  
-  .servers h2 {
-    background-color: #393E46;
-    margin: 0;
-    padding: 10px;
-  }
-  
-  .servers p {
-    padding: 10px;
-  }
-  
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #404040;
-  }
-   
-  ::-webkit-scrollbar-thumb {
-    background: #00ADB5;
-    border-radius: 4px; 
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
-  }
-  
-  .footer {
-      position: static;
-      bottom: 0;
-      padding: 15px;
-      background-color: #1B1B1B;
-      text-align: center;
-  }
-  
-  .footer > a {
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      color: #fff;
-  }
-  
-  .MainButtons {
-    background-color: transparent;
-    color: rgb(240, 139, 8);
-    border: 2px solid #EEEEEE;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  
-  .MainButtons:hover {
-    background-color: #00ADB5;
-    color: rgb(235, 14, 14);
-  }
-  
-  .statuspage{
-    cursor: not-allowed;
-  }
-  
+	margin: 0;
+	background: #222831;
+}
 
-  /* Modal Content */
-  .DiscordModal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  /*
-  ###################
-  --- NavBar menu ---
-  ###################
-  /* Navbar container */
-  .navbar {
-    overflow: hidden;
-    background-color: #0e1013;
-    font-family: Arial;
-    text-emphasis-color: white;
-  }
-  
-  /* Links inside the navbar */
-  .navbar a {
-    float: left;
-    font-size: 16px;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-  }
-  
-  /* The dropdown container */
-  .dropdown {
-    float: left;
-    overflow: hidden;
-  }
-  
-  /* Dropdown button */
-  .dropdown .dropbtn {
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: white;
-    padding: 14px 16px;
-    background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
-  }
-  
-  
-  .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: #00ADB5;
-  }
-  
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #292a2b;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  
-  .dropdown-content a {
-    float: none;
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-  
-  
-  .dropdown-content a:hover {
-    background-color: #393E46;
-  }
-  
-  
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-  
-  
-  /*
-  #################
-  --- Search bar---
-  #################
-  */
-  input[type=text] {
-    width: 230px;
-    position: absolute;
-    box-sizing: border-box;
-    border: 2px solid rgb(230, 16, 16);
-    border-radius: 2px;
-    font-size: 16px;
-    background-color: #ebd9d9;
-    background-image: url('');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-  }
-  
-  input[type=text]:focus {
-    width: 20%;
-    border: rgb(163, 16, 16);
-  }
-  
+h3 {
+	margin: 0;
+	padding: 10px;
+}
+.servers {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 
-  /*
-  ############
-  ---Alerts---
-  ############
-  */
-  .alert {
-    padding: 5px;
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .closebtn:hover {
-    color: black;
-  }
-  
-  
+}
 
-  
-  
-  
+.servers li {
+	border: 2px solid #393E46;
+	border-radius:5px;
+	background: #111316;
+	color: #fff;
+	flex: 1 1 200px;
+	margin: 32px 16px;
+}
+
+.servers h2 {
+	background-color: #393E46;
+	margin: 0;
+	padding: 10px;
+}
+
+.servers p {
+	padding: 10px;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #404040;
+}
+	
+::-webkit-scrollbar-thumb {
+	background: #00ADB5;
+	border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #555; 
+}
+
+footer {
+	padding: 12px 0;
+	width: 100%;
+	background-color: #1B1B1B;
+	font-size: 16px;
+	font-weight: bold;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.MainButtons {
+	background-color: transparent;
+	color: rgb(240, 139, 8);
+	border: 2px solid #EEEEEE;
+	padding: 16px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+
+.MainButtons:hover {
+	background-color: #00ADB5;
+	color: rgb(235, 14, 14);
+}
+
+.statuspage {
+	cursor: not-allowed;
+}
+
+
+/* Modal Content */
+.DiscordModal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+
+/* The Close Button */
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+	
+/*
+###################
+--- NavBar menu ---
+###################
+/* Navbar container */
+.navbar {
+	overflow: hidden;
+	background-color: #0e1013;
+	font-family: Arial;
+	text-emphasis-color: white;
+}
+
+/* Links inside the navbar */
+.navbar a {
+	float: left;
+	font-size: 16px;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* The dropdown container */
+.dropdown {
+	float: left;
+	overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+	font-size: 16px;
+	border: none;
+	outline: none;
+	color: white;
+	padding: 14px 16px;
+	background-color: inherit;
+	font-family: inherit; /* Important for vertical align on mobile phones */
+	margin: 0; /* Important for vertical align on mobile phones */
+}
+
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+	background-color: #00ADB5;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #292a2b;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+
+.dropdown-content a {
+	float: none;
+	color: white;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+	text-align: left;
+}
+
+
+.dropdown-content a:hover {
+	background-color: #393E46;
+}
+
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+	
+	
+/*
+#################
+--- Search bar---
+#################
+*/
+
+#ATNickForm {
+	margin-bottom: 2rem;
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	color: white;
+}
+
+input[type=text] {
+	padding: 12px 20px;
+	border: 2px solid rgb(230, 16, 16);
+	border-radius: 2px;
+	font-size: 16px;
+	background-color: #ebd9d9;
+	transition: width .4s;
+}
+	
+
+/*
+############
+---Alerts---
+############
+*/
+.alert {
+	padding: 5px;
+	background-color: #f44336;
+	color: white;
+}
+
+.closebtn {
+	margin-left: 15px;
+	color: white;
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 20px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: black;
+}
+
+#content {
+	padding: 0 1.5rem;
+}

@@ -1,53 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>api test</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/9b0a8d12f8.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    
-
-
-	<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
-  <div class="navbar">
-      <a Reload type="button"  onclick="history.go(0)">Reload</a>
-    </div>
-        
-    <div id="ATNickForm">
-         <a style="color:white;">  Nick člena</a> <input type="text" id="staffnick"/><br><br>
-        
-        <input id="ATNickSubmit" type="button" value="Submit"/>
-    </div>
-          
-
-      
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>api test</title>
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
 <body>
+	<div id="app">
+		<div class="navbar">
+			<a onclick="window.location.reload();">Reload</a>
+		</div>
 
-    <script src="/test.js"></script>
-  <div class="alert">
-    
-    
-    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
-  </div>
-  
+		<div id="content">
+			<div id="ATNickForm">
+				Nick člena <input type="text" id="staffnick" v-model="filterNick"/>
+			</div>
+			
+			<div v-for="admin in admins" v-show="filterNick ? admin.name.includes(filterNick) : true" :id="admin.name" style="margin-bottom: 2.5rem; display: flex; gap: 1rem; color: white; font-size: 30px;">
+				<div>
+					<i class="fa-solid fa-circle-info"></i>
+				</div>
+				<div style="display: flex; flex-direction: column;">
+					<span>Nick: {{ admin.name }}</span>
+					<span>Rank: {{ admin.group }}</span>
+					<span>Email: {{ admin.contactMail || "Neudan" }}</span>
+					<span>Discord: {{ admin.contactDiscord || "Neudan" }}</span>
+					<span>Online: {{ admin.online }}</span>
+				</div>
+			</div>
+			
+			<div class="alert">
+				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+			</div>
 
-	<ul class="servers"></ul>
-  <script src="./app.js"></script>
-	
+			<ul class="servers"></ul>
+		</div>
 
-
-
-
-
-
-    
+		<footer>
+			<span>Testrr were here</span>
+			<span>Testrr je taky bezchybnechybny "dev"</span>
+		</footer>
+	</div>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+	<script src="./app.js"></script>
 </body>
-<footer class="footer">
-	<a>Testrr je taky bezchybnechybny "dev"</a>
-</footer>
 </html>
