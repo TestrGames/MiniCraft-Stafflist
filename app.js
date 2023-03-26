@@ -2,10 +2,14 @@ const app = Vue.createApp({
     data() {
         return {
             admins: [],
+            groups: [],
             filterNick: ''
         }
     },
     methods: {
+        getAdminsByGroup(group) {
+            return this.admins.filter(a => a.group == group);
+        }
     },
     async mounted () {
         const req = await fetch("http://194.163.177.12:27001/all");
@@ -21,6 +25,13 @@ const app = Vue.createApp({
                 this.admins.push(...el2);
             }
         }
+
+        let arr2 = [];
+        for (let i = 0; i < arr.length; i++) {
+            const el = arr[i];
+            arr2.push(...el);
+        }
+        this.groups = arr2.map(q => q.name);
     }
 });
 app.mount('#app');

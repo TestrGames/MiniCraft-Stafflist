@@ -242,3 +242,9 @@ input[type=text] {
 #content {
 	padding: 0 1.5rem;
 }
+
+.groupTitle {
+	font-weight: 700;
+	font-size: 32px;
+	color: orange;
+}

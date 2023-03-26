@@ -19,16 +19,18 @@
 				Nick člena <input type="text" id="staffnick" v-model="filterNick"/>
 			</div>
 			
-			<div v-for="admin in admins" v-show="filterNick ? admin.name.includes(filterNick) : true" :id="admin.name" style="margin-bottom: 2.5rem; display: flex; gap: 1rem; color: white; font-size: 30px;">
-				<div>
-					<i class="fa-solid fa-circle-info"></i>
-				</div>
-				<div style="display: flex; flex-direction: column;">
-					<span>Nick: {{ admin.name }}</span>
-					<span>Rank: {{ admin.group }}</span>
-					<span>Email: {{ admin.contactMail || "Neudan" }}</span>
-					<span>Discord: {{ admin.contactDiscord || "Neudan" }}</span>
-					<span>Online: {{ admin.online }}</span>
+			<div v-for="group in groups" v-show="getAdminsByGroup(group).length > 0">
+				<p class="groupTitle">{{ group }}</p>
+				<div v-for="admin in getAdminsByGroup(group)" v-show="filterNick ? admin.name.includes(filterNick) : true" :id="admin.name" style="margin-bottom: 2.5rem; display: flex; gap: 1rem; color: white; font-size: 30px;">
+					<div>
+						<i class="fa-solid fa-circle-info"></i>
+					</div>
+					<div style="display: flex; flex-direction: column;">
+						<span>Nick: {{ admin.name }}</span>
+						<span>Email: {{ admin.contactMail || "Neudan" }}</span>
+						<span>Discord: {{ admin.contactDiscord || "Neudan" }}</span>
+						<span>Online: {{ admin.online }}</span>
+					</div>
 				</div>
 			</div>
 			
