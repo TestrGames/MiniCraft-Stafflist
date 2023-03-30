@@ -1,49 +1,76 @@
-.user-pic {
-    width: 150px;
-    height: 150px;
-    overflow: hidden;
-    border-radius: 100%;
-    margin: 20px auto 20px;
-    
+@import url('https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap');
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #e9e0e0;
+	color: #413d3d;
+	font-family: 'Roboto', 'Palanquin Dark', sans-serif;
+	text-align: center;
 }
 
-.card-box {
-    padding: 15px;
-    background-color: #423a3a;
-    margin: 20px 0px;
-    border-radius: 10px;
-    border: 1px solid #eee;
-    box-shadow: 0px 0px 8px 0px #8d8c8c;
-
-    
+::-webkit-scrollbar {
+	display: none;
 }
 
-.card-box p {
-    color: #808080;
+footer {
+	margin: 2rem;
+  	display: flex;
+  	justify-content: center;
+  	color: #c0b3b3;
 }
 
-.ikony{
- display: flex;
- justify-content: center;
- gap: 8px;
+p {
+	margin-top: 1.75rem;
+	margin-bottom: 1rem;
 }
 
-body{
- background-color: #e9e0e0;
-color: #413d3d;
+#content .groupTitle {
+	font-family: 'Palanquin Dark', sans-serif;
+	font-size: 48px;
+	letter-spacing: 1px;
 }
 
-body::-webkit-scrollbar {
-  display: none;
+#content .admin {
+	padding: 1rem 0;
+	display: flex;
+	flex-direction: column;
+	background: #F9F9F9;
+	border-radius: 1rem;
+	color: black;
+	box-shadow: rgba(17, 12, 46, .1) 0px 48px 100px 0px;
+	font-size: 30px;
 }
 
-
-
-footer{
-  display: flex;
-  justify-content: center;
-  color: #c0b3b3;
+#content .groupMembers {
+	padding: 0 10%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
 }
 
+#content .groupMembers .ikony {
+	margin: 12px;
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
 
-  
+.admin p {
+	margin: 0;
+	font-size: 20px;
+	font-weight: 400;
+	opacity: .8;
+}
+
+.admin p.name {
+	font-size: 34px;
+	font-weight: 600;
+	color: #333;
+}
+
+.admin p.status {
+	font-size: 24px;
+	font-weight: 500;
+}

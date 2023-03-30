@@ -6,59 +6,32 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>api test</title>
 	<link rel="stylesheet" href="./style.css">
-	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
    <script src="https://kit.fontawesome.com/9b0a8d12f8.js" crossorigin="anonymous"></script>
 	
 </head>
 <body>
 	<div id="app">
-		
-
 		<div id="content">
 			<div id="ATNickForm">
 				Nick člena <input type="text" id="staffnick" v-model="filterNick"/>
 			</div>
 			
 			<div v-for="group in groups" v-show="getAdminsByGroup(group).length > 0">
-				<p class="groupTitle">{{ group }}</p>
-				<div v-for="admin in getAdminsByGroup(group)" v-show="filterNick ? admin.name.includes(filterNick) : true" :id="admin.name" style="margin-bottom: 2.5rem; display: flex; gap: 1rem; color: white; font-size: 30px;">
+				<p class="groupTitle" v-if="getEgibleForFilter(group).length > 0">{{ group.replace("Plus", "+") }}</p>
+				<div class="groupMembers" :style="{ 'gridTemplateColumns': getAdminsByGroup(group).length == 2 ? '1fr 1fr' : null }">
+					<div v-for="admin in getEgibleForFilter(group)" :id="admin.name" class="admin" :style="{ 'gridColumnStart': getAdminsByGroup(group).length == 1 ? '2' : null }">
+						<div class="user-pic" @click.prevent="open(admin.name);">
+							<img :src="`https://cravatar.eu/helmhead/${admin.name}/170.png`" alt="User Pic">
+						</div>
+						<p class="name">{{ admin.name }}</p>
+						<p class="status">Online: <span :style="{ 'color': admin.online ? 'green' : 'red' }">{{ admin.online ? 'Aktivni' : 'Offline' }}</span></p>
 
-				<div id="data-container"></div>
-					<div class="row">
-						<div class="col-md-4">
-							<div class="card-box text-center">
-								<div class="user-pic">
-									<a href="https://www.minicraft.cz/profile/"   target="blank_"><img src="https://cravatar.eu/helmhead/saffers/190.png" class="img-fluid" alt="User Pic"></a>
-								</div>
-								<h4>{{ admin.name }}</h4>
-								<h6>{{ group }}</h6>
-								<hr>
-								<p>Online: {{ admin.online }}</p>
-						   <div class="ikony">
-							  <div data-toggle="tooltip" title= "{ admin.contactMail || Neudan }"><i  class="fa-solid fa-envelope fa-2xl"></i></div>
-						   </div>	  
-						</div>				  
-					</div>		 
-			
-							  
+						<div class="ikony">
+							<i class="fa-solid fa-envelope"></i>
+						</div>
 
-
-
-
-
-
-
-
-
-					<div style="display: flex; flex-direction: column;">
-						<span>Nick: {{ admin.name }}</span>
-						<span>Email: {{ admin.contactMail || "Neudan" }}</span>
-						<span>Discord: {{ admin.contactDiscord || "Neudan" }}</span>
-						<span>Online: {{ admin.online }}</span>
+						<p>Email: {{ admin.contactMail || "Neudan" }}</p>
+						<p>Discord: {{ admin.contactDiscord || "Neudan" }}</p>
 					</div>
 				</div>
 			</div>

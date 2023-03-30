@@ -9,6 +9,16 @@ const app = Vue.createApp({
     methods: {
         getAdminsByGroup(group) {
             return this.admins.filter(a => a.group == group);
+        },
+        getEgibleForFilter(group) {
+            const arr = [];
+            for (const admin of this.getAdminsByGroup(group)) {
+                if(this.filterNick ? admin.name.includes(this.filterNick) : true) arr.push(admin);
+            }
+            return arr;
+        },
+        open(name) {
+            window.open(`https://www.minicraft.cz/profile/${name}`);
         }
     },
     async mounted () {
