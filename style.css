@@ -26,14 +26,33 @@ p {
 	margin-bottom: 1rem;
 }
 
-#content .groupTitle {
+.teamTitle {
+	margin: 2rem 0 0;
 	font-family: 'Palanquin Dark', sans-serif;
 	font-size: 48px;
 	letter-spacing: 1px;
 }
 
-#content .admin {
-	padding: 1rem 0;
+.groupSubtitle {
+	margin: 0 0 1rem;
+	font-family: 'Palanquin Dark', sans-serif;
+	font-size: 40px;
+}
+
+.groupMembers {
+	padding: 0 10%;
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.groupRow {
+	display: grid;
+	gap: 1.5rem;
+}
+
+.admin {
+	padding: 1rem 2rem;
 	display: flex;
 	flex-direction: column;
 	background: #F9F9F9;
@@ -41,20 +60,6 @@ p {
 	color: black;
 	box-shadow: rgba(17, 12, 46, .1) 0px 48px 100px 0px;
 	font-size: 30px;
-}
-
-#content .groupMembers {
-	padding: 0 10%;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 1.5rem;
-}
-
-#content .groupMembers .ikony {
-	margin: 12px;
-	display: flex;
-	justify-content: center;
-	gap: 8px;
 }
 
 .admin p {

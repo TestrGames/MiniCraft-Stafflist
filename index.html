@@ -1,50 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>api test</title>
-	<link rel="stylesheet" href="./style.css">
-   <script src="https://kit.fontawesome.com/9b0a8d12f8.js" crossorigin="anonymous"></script>
-	
-</head>
-<body>
-	<div id="app">
-		<div id="content">
-			<div id="ATNickForm">
-				Nick člena <input type="text" id="staffnick" v-model="filterNick"/>
-			</div>
-			
-			<div v-for="group in groups" v-show="getAdminsByGroup(group).length > 0">
-				<p class="groupTitle" v-if="getEgibleForFilter(group).length > 0">{{ group.replace("Plus", "+") }}</p>
-				<div class="groupMembers" :style="{ 'gridTemplateColumns': getAdminsByGroup(group).length == 2 ? '1fr 1fr' : null }">
-					<div v-for="admin in getEgibleForFilter(group)" :id="admin.name" class="admin" :style="{ 'gridColumnStart': getAdminsByGroup(group).length == 1 ? '2' : null }">
-						<div class="user-pic" @click.prevent="open(admin.name);">
-							<img :src="`https://cravatar.eu/helmhead/${admin.name}/170.png`" alt="User Pic">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>api test</title>
+		<link rel="stylesheet" href="./style.css">
+	</head>
+	<body>
+		<div id="app">
+			<div v-for="team in data">
+				<p class="teamTitle">{{ team.name }}</p>
+				<div v-for="group in team.groups">
+					<p class="groupSubtitle">{{ group.name }}</p>
+					<div class="groupMembers">
+						<div class="groupRow" v-for="row in getRow(group.users)" :style="{ 'gridTemplateColumns': `repeat(${row.length}, 1fr)` }">
+							<div v-for="(admin, _index) in row" :key="_index" class="admin">
+								<div class="user-pic" @click.prevent="open(admin.name);">
+									<img :src="`https://cravatar.eu/helmhead/${admin.name}/170.png`" alt="User Pic">
+								</div>
+								<p class="name">{{ admin.name }}</p>
+								<p class="status">Online: <span :style="{ 'color': admin.online ? 'green' : 'red' }">{{ admin.online ? 'Aktivni' : 'Offline' }}</span></p>
+		
+								<p>Email: {{ admin.contactMail || "Neudan" }}</p>
+								<p>Discord: {{ admin.contactDiscord || "Neudan" }}</p>
+							</div>
 						</div>
-						<p class="name">{{ admin.name }}</p>
-						<p class="status">Online: <span :style="{ 'color': admin.online ? 'green' : 'red' }">{{ admin.online ? 'Aktivni' : 'Offline' }}</span></p>
-
-						<div class="ikony">
-							<i class="fa-solid fa-envelope"></i>
-						</div>
-
-						<p>Email: {{ admin.contactMail || "Neudan" }}</p>
-						<p>Discord: {{ admin.contactDiscord || "Neudan" }}</p>
 					</div>
 				</div>
 			</div>
-			
 
-			
+			<footer>
+				<span>Yomo & Testrr were here</span>
+			</footer>
 		</div>
-
-		<footer>
-			<span>Yomo & Testrr were here</span>
-		</footer>
-	</div>
-	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-	<script src="./app.js"></script>
-</body>
+		<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+		<script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+		<script src="./app.js"></script>
+	</body>
 </html>

@@ -1,20 +1,21 @@
 const app = Vue.createApp({
     data() {
         return {
-            admins: [],
-            groups: [],
-            filterNick: ''
+            data: []
         }
     },
     methods: {
-        getAdminsByGroup(group) {
-            return this.admins.filter(a => a.group == group);
-        },
-        getEgibleForFilter(group) {
+        getRow(users) {
             const arr = [];
-            for (const admin of this.getAdminsByGroup(group)) {
-                if(this.filterNick ? admin.name.includes(this.filterNick) : true) arr.push(admin);
+            let _ = [];
+            for(let i = 0; i < users.length; i++) {
+                _.push(users[i]);
+                if(i % 3 == 2) {
+                    arr.push(_);
+                    _ = [];
+                }
             }
+            if(_.length > 0) arr.push(_);
             return arr;
         },
         open(name) {
@@ -22,26 +23,9 @@ const app = Vue.createApp({
         }
     },
     async mounted () {
-        const req = await fetch("http://194.163.177.12:27001/all");
-        const { value } = await req.json();
-
-        let arr = value.map(q => q.groups);
-        for (let i = 0; i < arr.length; i++) {
-            const el = arr[i];
-            let r = el.map(q => q.users);
-            
-            for (let j = 0; j < r.length; j++) {
-                const el2 = r[j];
-                this.admins.push(...el2);
-            }
-        }
-
-        let arr2 = [];
-        for (let i = 0; i < arr.length; i++) {
-            const el = arr[i];
-            arr2.push(...el);
-        }
-        this.groups = arr2.map(q => q.name);
+        const req = await axios.get("https://demo.lishak.eu/api/data");
+        const { data } = await req;
+        this.data = data;
     }
 });
 app.mount('#app');
