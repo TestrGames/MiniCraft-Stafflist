@@ -35,7 +35,7 @@ p {
 }
 
 .groupSubtitle {
-	margin: 0 0 1rem;
+	margin: 0 auto 1rem;
 	font-family: 'Palanquin Dark', sans-serif;
 	font-size: 40px;
 	color: #FFBE02;
@@ -98,4 +98,32 @@ p {
 
 .admin .icon span {
 	margin-top: -1px;
+}
+
+@media only screen and (max-width: 1264px) {
+	/*.groupRow {
+		grid-template-columns: 1fr 1fr !important;
+	}*/
+	.admin img {
+		width: 100px;
+	}
+
+	.admin p.name {
+		font-size: 26px;
+	}
+
+	.admin p.status {
+		font-size: 18px;
+	}
+
+	.admin .icon {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 1006px) {
+	.groupRow {
+		display: flex;
+		flex-direction: column;
+	}
 }
