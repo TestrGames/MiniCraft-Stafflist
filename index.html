@@ -13,7 +13,7 @@
 			<div v-for="team in data">
 				<p class="teamTitle">{{ team.name }}</p>
 				<div v-for="group in team.groups" v-show="group.users.length > 0">
-					<p class="groupSubtitle">{{ group.name }}</p>
+					<p class="groupSubtitle">{{ group.name.replace('Plus', '+') }}</p>
 					<div class="groupMembers">
 						<div class="groupRow" v-for="row in getRow(group.users)" :style="{ 'gridTemplateColumns': `repeat(${row.length}, 1fr)` }">
 							<div v-for="(admin, _index) in row" :key="_index" class="admin">
