@@ -22,25 +22,26 @@ const app = Vue.createApp({
             window.open(`https://www.minicraft.cz/profile/${name}`);
         },
         convertTimestamp(timestamp) {
-            const date = new Date(timestamp);
-            const hours = date.getHours();
-            const minutes = date.getMinutes();
-            const day = date.getDate();
-            const month = date.getMonth() + 1;
-            const year = date.getFullYear();
-            const timeString = `${hours}:${minutes}`;
-            const dateString = `${day}.${month}.${year}`;
-            return { time: timeString, date: dateString };
+            if (timestamp === 0) {
+                return { date: "Kdo vi" };
+            } else {
+                const date = moment(timestamp);
+                const timeString = date.format('HH:mm');
+                const dateString = date.format('DD.MM.YYYY');
+                return { time: timeString, date: dateString };                
+            }
         }
     },
     async mounted() {
         try {
             const req = await axios.get("https://api.testrgames.com/v1/minicraftcz/staff");
             const { data } = req;
-            // Check if admin and login properties exist for each user before converting timestamp
             data.forEach(user => {
                 if (user.login) {
                     user.login = this.convertTimestamp(user.login);
+                }
+                if (user.lastJoined) {
+                    user.lastJoined = this.convertTimestamp(user.lastJoined);
                 }
             });
             this.data = data;

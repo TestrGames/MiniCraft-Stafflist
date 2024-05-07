@@ -132,21 +132,27 @@ p {
 .tooltip {
 	position: relative;
 	display: inline-block;
-	border-bottom: 1px dotted black;
+	font-size: 22px;
+	
   }
   
   .tooltip .tooltiptext {
 	visibility: hidden;
-	width: 120px;
-	background-color: black;
-	color: #fff;
+	width: 200px;
+	background-color: transparent;
+	color: #080808;
 	text-align: center;
 	border-radius: 6px;
 	padding: 5px 0;
-  
+	font-size: 15px;
+	font-weight: bold;
+	
 	/* Position the tooltip */
 	position: absolute;
 	z-index: 1;
+	top: 57%;
+	left: 50%;
+	margin-left: -95px;
   }
   
   .tooltip:hover .tooltiptext {
