@@ -13,7 +13,7 @@
 			<div v-for="team in data">
 				<p class="teamTitle">{{ team.name }}</p>
 				<div v-for="group in team.groups" v-show="group.users.length > 0">
-					<p class="groupSubtitle">{{ group.name.replace('Plus', '+') }}</p>
+					<p class="groupSubtitle">{{ group.name.replace('Plus', '+').replace('ZkModerator', 'Zk.Moderator').replace('ZkBuilder', 'Zk.Builder').replace('ZkDeveloper', 'Zk.Developer').replace('Kuchari', 'dd') }}</p>
 					<div class="groupMembers">
 						<div class="groupRow" v-for="row in getRow(group.users)" :style="{ 'gridTemplateColumns': `repeat(${row.length}, 1fr)` }">
 							<div v-for="(admin, _index) in row" :key="_index" class="admin">
@@ -21,8 +21,8 @@
 									<img :src="`https://cravatar.eu/helmhead/${admin.name}/170.png`" alt="User Pic">
 								</div>
 								<p class="name">{{ admin.name }}</p>
-								<p class="status">Online: <span :style="{ 'color': admin.online ? 'green' : 'red' }">{{ admin.online ? 'Aktivni' : 'Offline' }}</span></p>
-		
+								<p class="status" :title="'Naposledy online: ' + convertTimestamp(admin.login).date + ' ' + convertTimestamp(admin.login).time"><span :style="{ 'color': admin.online ? 'green' : 'red' }">{{ admin.online ? 'Aktivni' : 'Offline' }}</span></p>
+
 								<div class="icon" v-if="admin.contactMail" style="margin-top: 1rem;">
 									<i class="fa-regular fa-envelope"></i>
 									<span>{{ admin.contactMail }}</span>
@@ -31,6 +31,10 @@
 									<i class="fa-brands fa-discord"></i>
 									<span>{{ admin.contactDiscord }}</span>
 								</div>
+								<!--<div class="icon" v-if="admin.login"> ZOBRAZENI BEZ TOOLTIPU JEN PROSTE DALSI POLICKO
+									<i class="fa-regular fa-eye"></i>
+									<span>{{convertTimestamp(admin.login).date}} {{ convertTimestamp(admin.login).time}} </span>
+								</div> -->
 							</div>
 						</div>
 					</div>
