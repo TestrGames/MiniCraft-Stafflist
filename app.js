@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             data: [],
-            errorMessage: '' // Nová proměnná pro zobrazení chybové zprávy
+            errorMessage: '' 
         }
     },
     methods: {
@@ -11,7 +11,7 @@ const app = Vue.createApp({
             let _ = [];
             for (let i = 0; i < users.length; i++) {
                 _.push(users[i]);
-                if (i % 3 == 2) {
+                if (i % 3 === 2) {
                     arr.push(_);
                     _ = [];
                 }
@@ -24,11 +24,17 @@ const app = Vue.createApp({
         },
         convertTimestamp(timestamp) {
             if (timestamp === 0) {
-                return { date: "Kdo vi" };
+                return { date: "Kdo ví" };
             } else {
-                const date = moment(timestamp);
-                const timeString = date.format('HH:mm');
-                const dateString = date.format('DD.MM.YYYY');
+                // Převod blbyho timestampu na normlani cas rr
+                const date = new Date(parseInt(timestamp));
+                const hours = date.getHours().toString().padStart(2, '0');
+                const minutes = date.getMinutes().toString().padStart(2, '0');
+                const day = date.getDate();
+                const month = date.getMonth() + 1;
+                const year = date.getFullYear();
+                const timeString = `${hours}:${minutes}`;
+                const dateString = `${day}.${month}.${year}`;
                 return { time: timeString, date: dateString };                
             }
         }
@@ -37,18 +43,26 @@ const app = Vue.createApp({
         try {
             const req = await axios.get("https://api.testrgames.com/v1/minicraftcz/staff");
             const { data } = req;
-            data.forEach(user => {
-                if (user.login) {
-                    user.login = this.convertTimestamp(user.login);
-                }
-                if (user.lastJoined) {
-                    user.lastJoined = this.convertTimestamp(user.lastJoined);
-                }
+            data.forEach(team => {
+                team.groups.forEach(group => {
+                    group.users.forEach(user => {
+                        user.login = this.convertTimestamp(user.login);
+                        if (user.lastJoined) {
+                            user.lastJoined = this.convertTimestamp(user.lastJoined);
+                        }
+                        // ZOBRAZENI DOVOLENY
+                        if (user.holiday) {
+                            user.status = 'Dovolená';
+                        } else {
+                            user.status = user.online ? 'Aktivní' : 'Offline';
+                        }
+                    });
+                });
             });
             this.data = data;
         } catch (error) {
             console.error('Error fetching data:', error);
-            this.errorMessage = 'Nastala chyba při načítání dat. Kontaktuj nás prosím na discordu.'; // Nastavení chybové zprávy
+            this.errorMessage = 'Nastala chyba při načítání dat. Kontaktuj nás prosím na discordu.';
             this.data = [];
         }
     }
