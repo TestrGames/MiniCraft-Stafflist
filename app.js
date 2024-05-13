@@ -1,7 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            data: []
+            data: [],
+            errorMessage: '' // Nová proměnná pro zobrazení chybové zprávy
         }
     },
     methods: {
@@ -47,6 +48,7 @@ const app = Vue.createApp({
             this.data = data;
         } catch (error) {
             console.error('Error fetching data:', error);
+            this.errorMessage = 'Nastala chyba při načítání dat. Kontaktuj nás prosím na discordu.'; // Nastavení chybové zprávy
             this.data = [];
         }
     }
